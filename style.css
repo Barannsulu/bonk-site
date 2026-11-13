@@ -1,0 +1,96 @@
+@font-face { font-family: 'Fraunces'; src: url('fonts/Fraunces_900Black_Italic.ttf') format('truetype'); font-weight: 900; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Geist'; src: url('fonts/Geist_400Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Geist'; src: url('fonts/Geist_600SemiBold.ttf') format('truetype'); font-weight: 600; font-display: swap; }
+@font-face { font-family: 'Geist'; src: url('fonts/Geist_900Black.ttf') format('truetype'); font-weight: 900; font-display: swap; }
+
+:root {
+  --bg: #0b0712;
+  --surface: #171120;
+  --surface-hi: #211830;
+  --text: #f7f2ff;
+  --dim: #b8accd;
+  --faint: #8c80a2;
+  --gold: #f2c97d;
+  --pink: #ff4fa3;
+  --magenta: #e040fb;
+  --line: rgba(255, 255, 255, 0.09);
+  --display: 'Fraunces', Georgia, serif;
+}
+.cyr { --display: 'Geist', -apple-system, sans-serif; }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: radial-gradient(110% 70% at 50% -10%, #4a1670 0%, #1b0b33 45%, var(--bg) 75%) no-repeat, var(--bg);
+  color: var(--text);
+  font: 400 17px/1.6 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; }
+a { color: var(--pink); }
+
+/* Top bar */
+.bar { max-width: 1120px; margin: 0 auto; padding: 18px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo img { border-radius: 9px; }
+.logo span { font: italic 900 26px/1 var(--display); color: var(--gold); padding-right: 4px; }
+.langs { display: flex; gap: 6px; }
+.langs a { color: var(--dim); text-decoration: none; font-size: 14px; padding: 6px 10px; border-radius: 99px; }
+.langs a[aria-current] { color: var(--text); background: var(--surface-hi); }
+
+main { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+
+/* Hero */
+.hero { text-align: center; padding: 40px 0 28px; }
+.hero-icon { width: 132px; border-radius: 30px; box-shadow: 0 20px 60px rgba(224, 64, 251, 0.35); transform: rotate(-4deg); }
+.hero h1 { font: italic 900 clamp(44px, 8vw, 88px)/1.02 var(--display); letter-spacing: -0.02em; margin: 28px 0 0; }
+.hero h1 span { display: block; }
+.hero h1 em { display: block; font-style: italic; color: var(--gold); }
+.cyr .hero h1, .cyr .hero h1 em { font-style: normal; letter-spacing: -0.03em; }
+.sub { max-width: 620px; margin: 20px auto 0; color: var(--dim); font-size: clamp(17px, 2.2vw, 20px); }
+.cta { display: inline-block; margin: 28px 0 0; padding: 14px 26px; border-radius: 99px; font-weight: 600; background: linear-gradient(135deg, #7c3aed, #c026d3 55%, #ff4fa3); box-shadow: 0 10px 30px rgba(224, 64, 251, 0.35); }
+.pills { list-style: none; padding: 0; margin: 18px 0 0; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.pills li { font-size: 13px; color: var(--dim); padding: 4px 12px; border: 1px solid var(--line); border-radius: 99px; background: rgba(23, 17, 32, 0.6); }
+
+/* Screenshots: a row that scrolls sideways on phones */
+.shots { display: flex; gap: 22px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 36px 4px 24px; margin: 0 -16px; padding-left: 16px; padding-right: 16px; }
+.shots figure { margin: 0; flex: 0 0 auto; width: min(240px, 62vw); scroll-snap-align: center; text-align: center; }
+.shots img { display: block; width: 100%; border-radius: 30px; border: 3px solid rgba(255, 255, 255, 0.12); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55); background: var(--surface); }
+.shots figcaption { margin-top: 12px; font-size: 14px; color: var(--dim); }
+@media (min-width: 1140px) { .shots { justify-content: center; overflow: visible; } .shots figure:nth-child(even) { transform: translateY(36px); } }
+
+/* Blocks */
+.block { padding: 56px 0 8px; }
+.block h2 { font: italic 900 clamp(30px, 4.5vw, 46px)/1.1 var(--display); text-align: center; margin: 0 auto 28px; max-width: 760px; }
+.cyr .block h2 { font-style: normal; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 22px; }
+.card .emoji { font-size: 30px; }
+.card h3, .private h3 { margin: 8px 0 4px; font-size: 19px; }
+.card p, .private p { margin: 0; color: var(--dim); }
+.private .grid { background: linear-gradient(135deg, rgba(124, 58, 237, 0.18), rgba(255, 79, 163, 0.12)); border: 1px solid rgba(242, 201, 125, 0.25); border-radius: 26px; padding: 26px; }
+.two { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+details { max-width: 760px; margin: 0 auto 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px 18px; }
+summary { cursor: pointer; font-weight: 600; }
+details p { margin: 8px 0 0; color: var(--dim); }
+
+/* Footer */
+.foot { text-align: center; padding: 64px 16px 48px; color: var(--faint); }
+.foot img { border-radius: 11px; opacity: 0.9; }
+.foot p { margin: 8px 0 0; }
+.foot .links a { color: var(--dim); }
+.foot .small { font-size: 13px; }
+
+/* Support and privacy pages */
+.doc { max-width: 720px; }
+.doc article { padding: 28px 0 8px; border-top: 1px solid var(--line); margin-top: 20px; }
+.doc article:first-child { border-top: 0; margin-top: 0; }
+.doc h1 { font: italic 900 34px/1.15 var(--display); margin: 0 0 6px; }
+.doc .cyr h1, .doc [lang='ru'] h1 { font-family: 'Geist', sans-serif; font-style: normal; }
+.doc h2 { font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin: 26px 0 6px; }
+.doc .meta { color: var(--faint); font-size: 14px; margin: 0 0 12px; }
+.doc .lead { font-size: 18px; color: var(--text); }
+.doc p, .doc li, .doc dd { color: var(--dim); }
+.doc dt { color: var(--text); font-weight: 600; margin-top: 12px; }
+.doc dd { margin: 2px 0 0; }
